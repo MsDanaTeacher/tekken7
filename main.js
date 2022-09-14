@@ -1,17 +1,21 @@
-function one() {
-    let names = ['akuma', 'alisa' ,'anna', 'asuka', 'bob', 'bryan', 'claudio', 'dragunov', 'eddy', 'eliza', 'feng', 'geese']
-    const fighterUrl = (name) => {
-      return `https://tk7.tekken.com/assets/images/fighters-final/${name}-standard/thumbnail-headshot.png`
-    }
-    return (
-      <>
-      <div className="backg">
-        <div className="fighters">
-          {names.map((el, i) => {
-            return <img className="each" src={fighterUrl(el)} />
-          })}
-        </div>
-        </div>
-      </>
-    );
-  }
+let fighters = ["bryan", "anna", "eddy", "eliza", "feng", "kazumi", "kuma", "lili", "dragunov", "heihachi", "lidia", "raven"]
+
+// Recreate the Fighters grid using this function
+
+const fighterUrl = (name) => {
+  return `https://tk7.tekken.com/assets/images/fighters-final/${name}-standard/thumbnail-headshot.png`
+}
+
+let fightersGrid = document.getElementById("#fighters-grid")
+console.log("fighters grid", fightersGrid)
+
+fighters.forEach((fighter) => {
+    let div = document.createElement("div")
+    div.classList.add("fighter-thumb")
+    let img = document.createElement("img")
+    img.src = fighterUrl(fighter)
+    img.style.height = "100px"
+    img.style.width = "100px"
+    div.append(img)
+    fightersGrid.append(div)
+})
